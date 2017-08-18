@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter
+END
+NOTICE
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/NOTICE
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/LICENSE
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/__init__.py
+END
+get_access_token.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/get_access_token.py
+END
+setup.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/setup.py
+END
+CHANGES
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/CHANGES
+END
+COPYING
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/COPYING
+END
+twitter_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/twitter_test.py
+END
+twitter.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/twitter.py
+END
+PKG-INFO
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/PKG-INFO
+END
+t.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/t.py
+END
+MANIFEST.in
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/MANIFEST.in
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/README
+END
+setup.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/140/trunk/lib/twitter/setup.cfg
+END

@@ -1,0 +1,41 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin">Admin Home</a>&nbsp;|&nbsp;<a href="/adminTeamAll">Team Home</a></p>
+<hr>
+    <form id="teamAdd" enctype="multipart/form-data" action="teamAdd" method="post">
+        <fieldset>
+            <legend>Add Team</legend>
+            Sport:<select name="sportkey">
+            {% for sport in sports %}
+                <option value="{{sport.key}}" {% ifequal sport.key leaguesportkey %}selected{% endifequal %}>{{sport.type}}</option>
+            {% endfor %}
+            </select><br>
+            League:<select name="leaguekey">
+            {% for league in leagues %}
+                <option value="{{league.key}}" {% ifequal league.key teamleaguekey %}selected{% endifequal %}>{{league.name}}</option>
+            {% endfor %}
+            </select><br>
+            Avatar: <input type="file" id="text" name="avatar" value=""><br>
+            <label for="name">Name:</label>
+            <input name="name" id="name" type="text"/><br>
+            <label for="description">Description:</label>
+            <input name="description" id="description" type="text"/><br>
+            <label for="club">Club:</label>
+            <input type="text" id="text" name="club" value="{{team.club}}"><br>
+            <label for="country">Country:</label>
+            <input type="text" id="text" name="country" value="{{team.country}}"><br>
+            <label for="city">City:</label>
+            <input type="text" id="text" name="city" value="{{team.city}}"><br>
+            <label for="city">Team Facebook ID:</label>
+            <input type="text" id="text" name="facebookid" value=""><br>
+            <label for="city">Team Twitter ID:</label>
+            <input type="text" id="text" name="twitterid" value=""><br>
+            <button type="submit">Add</button>
+        </fieldset>
+    </form>
+
+{% endblock %}

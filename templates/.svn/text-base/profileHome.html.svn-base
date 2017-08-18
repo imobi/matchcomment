@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin">Admin Home</a>&nbsp;|&nbsp;<a href="/adminProfileAll">User Profiles Home</a></p>
+
+<hr>
+<span class="frontpageheading">
+Logged in users ({{totalusercount}}), Total comments ({{totalcomments}})
+</span>
+<br><br>
+<ol>
+    {% for profile in profiles %}
+    <li>
+        <a href="/profileEdit?key={{profile.key}}">{{profile.alias}}</a>
+        login mechanism: ({{profile.loginMechanism}})
+        {% ifequal profile.loginMechanism "gmail"  %}
+        email: ({{profile.alias}}@gmail.com)
+        {% else %}
+        contact via facebook
+        {% endifequal %}
+        registered: ({{profile.registered}})
+        <a href="/profileDelete?key={{profile.key}}">Delete</a>
+    </li>
+    {% endfor %}
+</ol>
+
+{% endblock %}

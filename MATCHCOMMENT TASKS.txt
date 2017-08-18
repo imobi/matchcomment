@@ -1,0 +1,33 @@
+MatchComment (Main portal)
+SoccerComment(Fifa) - revenue share
+RugbyComment(IRB) - revenue share
+CricketComment(ICC) - revenue share
+
+Tasks:
+- Team listing by league (working)
+- Proper fixture listings with dates (working)
+- Show actual date times for front page and matches and sort correctly by date
+- Show when game is live or passed
+- Show team comments
+- create logs tools
+- Create reminders
+- Notification when users follow you
+- Reminders when games are on to comment (instant messages, facebook, twitter and email)
+- Users can create match fixtures, update match scores and invite other users to matches
+- Create invite for yahoo, msn, hotmail, facebook and twitter users
+- Users invite their contacts (http://www.cloudsponge.com/)
+- rating (females rate sportsmen, males rate player performances)
+- integrate top player and team comment feeds from twitter and facebook
+- create usertypes:
+Administrator:
+-platform administrator
+League administrator:
+- create leagues, set league rules (points for wins, losses,etc), create teams, create matches
+Match administrator:
+- create matches, update match scores, assign user rights to update matches, delete user match comments
+User:
+-can comment and connect with other users and teams
+
+
+Bugs:
+- force user to login if profile link is clicked and user not logged in or disable link all together. maybe put login links on front page

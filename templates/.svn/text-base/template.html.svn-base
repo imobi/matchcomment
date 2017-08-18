@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="/style/main.css" />
+        <meta property="og:image" content="http://www.matchcomment.com/images/logo.png" />
+        <meta property="og:title" content="MatchComment" />
+        <meta property="og:type" content="product" />
+        <meta property="og:url" content="http://www.matchcomment.com" />
+        <!--<link rel="icon" type="image/png" href="/images/favicon.png">-->
+        {% ifequal request.path "/match" %}
+            <!--<META HTTP-EQUIV="REFRESH" CONTENT="100">
+            <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">-->
+        {% endifequal%}
+        {% block head %}{% endblock %}
+        <!-- Google Analytics -->
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-4287371-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+          var rpxJsHost = (("https:" == document.location.protocol) ? "https://" : "http://static.");
+          document.write(unescape("%3Cscript src='" + rpxJsHost +
+        "rpxnow.com/js/lib/rpx.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+          RPXNOW.overlay = true;
+          RPXNOW.language_preference = 'en';
+        </script>
+        <div id="body" class="bodywrapper">
+            <div id="top_main_navigation">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="top_main_navigation">
+                    <tr>
+                        <td width="120" height="20" align="left" valign="middle">
+                            <a title="MatchComment - sport connections" href="/"><h1 class="matchcommentlogo">MatchComment</h1></a>&nbsp;<span class="logo"">ALPHA</span>
+                        </td>
+                    </tr>
+                </table>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="top_main_navigation">
+                    <tr>
+                        <td align="left" valign="bottom">
+                            <a href="/">Home</a>&nbsp;&nbsp;<span class="slogan">|</span>&nbsp;
+                            {% if user %}
+                            <a href="/profile">Profile</a>&nbsp;&nbsp;<span class="slogan">|</span>&nbsp;
+                            {% endif %}
+                            {% ifequal profile.userType "admin" %}
+                            <a href="/admin">Admin</a>&nbsp;&nbsp;<span class="slogan">|</span>&nbsp;
+                            {% endifequal %}
+                            {% if user %}
+                                {% if profile.loginMechanism != "facebook" %}
+                                <a href="{{ logout_url }}">Logout</a>
+                                {% else %}
+                                <a href="/facebookLogout">Logout</a></td>
+                                {% endif %}
+                            {% else %}
+                                <a href="/loginPageView">Login</a>&nbsp;&nbsp;<span class="slogan">|</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="content">
+                <!--<h1>{% block pagetitle %}P A G E  T I T L E{% endblock %}</h1>-->
+                {% block content %}C O N T E N T{% endblock %}
+            </div>
+            <div id="footer" align="left" class="footer">
+                &#169; 2011 - MatchComment.com | <a style="font-size: 6pt;" href="mailto:info@matchcomment.com">info@matchcomment.com</a>
+            </div>
+        </div>
+    </body>
+</html>
+

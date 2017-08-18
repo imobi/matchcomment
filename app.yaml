@@ -1,0 +1,60 @@
+application: matchcomment
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+- url: /download/android/MatchComment.apk
+  static_files: download/android/MatchComment.apk
+  upload: download/android/MatchComment.apk
+
+- url: /robots.txt
+  static_files: robots/robots.txt
+  upload: robots/robots.txt
+  
+- url: /style
+  static_dir: style
+  
+- url: /script
+  static_dir: script
+
+- url: /images
+  static_dir: images
+
+- url: /comment.*
+  script: comment.py
+
+- url: /match.*
+  script: match.py
+
+- url: /profile.*
+  script: sprofile.py
+
+- url: /admin.*
+  script: admin.py
+
+- url: /sport.*
+  script: sport.py
+
+- url: /league.*
+  script: league.py
+
+- url: /team.*
+  script: team.py
+
+- url: /player.*
+  script: player.py
+  
+- url: /network.*
+  script: network.py
+  
+- url: /widget.*
+  script: widget.py
+  
+- url: /api.*
+  script: api.py
+
+- url: /.*
+  script: index.py
+  

@@ -1,0 +1,45 @@
+{% extends "template.html" %}
+{% block title %}Admin{% endblock %}
+{% block pagetitle %}Admin{% endblock %}
+
+{% block content %}
+
+<p>Tools to help users build matchcomment.com</p>
+{% if admin %}
+<b>Sport functions:</b>
+<br>&nbsp;-&nbsp;<a href="/adminSportAll">View Sports</a>
+<br>&nbsp;-&nbsp;<a href="/sportNew">Add Sport</a>
+<p></p>
+{% endif %}
+<b>League functions:</b>
+<br>&nbsp;-&nbsp;<a href="/adminLeagueAll">View Leagues</a>
+<br>&nbsp;-&nbsp;<a href="/leagueNew">Add League</a>
+<p></p>
+<b>Match functions:</b>
+<br>&nbsp;-&nbsp;<a href="/adminMatchAll">View Matches</a>
+<br>&nbsp;-&nbsp;<a href="/matchNew">Add Match</a>
+<p></p>
+<b>Team functions:</b>
+<br>&nbsp;-&nbsp;<a href="/adminTeamAll">View Teams</a>
+<br>&nbsp;-&nbsp;<a href="/teamNew">Add Team</a>
+<p></p>
+<b>Player functions:</b>
+<br>&nbsp;-&nbsp;<a href="/adminPlayerAll">View Players</a>
+<br>&nbsp;-&nbsp;<a href="/playerNew">Add Player</a>
+<p></p>
+{% if admin %}
+<b>User Profile functions:</b>
+<br>&nbsp;-&nbsp;<a href="/adminProfileAll">View User Profiles</a>
+<br>&nbsp;-&nbsp;<a href="/adminProfileAll">Update profile emails</a>
+<br>&nbsp;-&nbsp;<a href="/adminProfileAll">Message all users</a>
+<br>&nbsp;-&nbsp;<a href="/userNew">Add User</a>
+{% endif %}
+
+<p>Janrain:<br>
+<a class="rpxnow" onclick="return false;" href="https://matchcomment.rpxnow.com/openid/v2/signin?token_url=http%3A%2F%2Fwww.matchcomment.com%2Fjanrainloginuser"> Sign In </a>
+
+<p></p>
+
+<iframe src="http://matchcomment.rpxnow.com/openid/embed?token_url=http%3A%2F%2Fwww.matchcomment.com%2Fjanrainloginuser" scrolling="no" frameBorder="no" allowtransparency="true" style="width:400px;height:240px"></iframe>
+
+{% endblock %}

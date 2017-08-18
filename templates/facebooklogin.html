@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+    {% if current_user %}
+      <p><a href="{{ current_user.profile_url }}"><img src="http://graph.facebook.com/{{ current_user.id }}/picture"/></a></p>
+      <p>You are logged in as {{ current_user.name|escape }}</p>
+      <p><a href="/facebookLogout">Log out</a></p>
+    {% else %}
+      <p>You are not yet logged into this site</p>
+      <p><a href="/facebookLogin">Log in with Facebook</a></p>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+<form action="/loginPageView" method="post">
+<table width="100%" cellpadding="2" cellspacing="2">
+{% if user %} <!-- Show logout links -->
+    {% if profile.loginMechanism != "facebook" %}
+    <tr>
+        <td width="15"><img src="images/google_icon.png" border="0" /></td>
+        <td><a href="{{ logout_url }}">Logout: {{profile.alias}}</a></td>
+    </tr>
+    {% else %}
+    <tr>
+        <td width="15"><img src="images/facebook_icon.png" border="0" /></td>
+        <td><a href="/facebookLogout">Logout: {{profile.alias}}</a></td>
+    </tr>
+    {% endif %}
+{% else %} <!-- Show login links -->
+	<tr>
+		<td><label for="login_userlogin">Username</label></td>
+		<td><input type="text" id="login_userlogin" name="login_userlogin"></td>
+	</tr>
+	<tr>
+		<td><label for="login_password">Password</label></td>
+		<td><input type="password" id="login_password" name="login_password"></td>
+	</tr>
+	<tr>
+		<td><input type="submit" id="login_commit" name="login_commit" value="Login"></td>
+		<td></td>
+	</tr>
+	<tr><td></td><td></td></tr>
+	<tr>
+		<td>or</td>
+	</tr>
+	<tr><td></td><td></td></tr>
+    <tr>
+        <td colspan="2"><img src="images/google_icon.png" border="0" /><a href="{{ login_url }}">Login with Gmail</a></td>
+    </tr>
+    <tr>
+        <td colspan="2"><img src="images/facebook_icon.png" border="0" /><a href="/facebookLogin">Login with Facebook</a></td>
+    </tr>
+{% endif %}
+</table>
+</form>
+<!--
+loggedinuser: {{loggedinuser}}<br>
+loginmechanism: {{loginmechanism}}
+-->
+<br>
+
+{% endblock %}

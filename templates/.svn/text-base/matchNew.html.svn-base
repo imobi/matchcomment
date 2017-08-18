@@ -1,0 +1,33 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+    <form id="matchAdd" action="matchAdd" method="get">
+        <fieldset>
+            <legend>Add Match</legend>
+            League: <select name="leaguekey">
+            {% for league in leagues %}
+                <option value="{{league.key}}" {% ifequal league.key matchleaguekey %}selected{% endifequal %}>{{league.name}}</option>
+            {% endfor %}
+            </select><br>
+            Home Team: <select name="hometeamkey">
+            {% for team in teams %}
+                <option value="{{team.key}}" {% ifequal team.key matchleaguekey %}selected{% endifequal %}>{{team.name}}</option>
+            {% endfor %}
+            </select><br>
+            Away Team: <select name="awayteamkey">
+            {% for team in teams %}
+                <option value="{{team.key}}" {% ifequal team.key matchleaguekey %}selected{% endifequal %}>{{team.name}}</option>
+            {% endfor %}
+            </select><br>
+            <label for="matchStart">Match Start Time: (2010-01-01 12:00)</label><br>
+            <input name="matchStart" id="matchStart" type="text" value="{{matchStart}}" /><br>
+            <label for="venue">Venue: (drop down of venues)</label><br>
+            <input name="venue" id="venue" type="text" value="{{venue}}" />
+            <input name="sportkey" id="sportkey" type="hidden" value="{{sport.key}}" /><br>
+            <button type="submit">Add</button>
+        </fieldset>
+    </form>
+
+{% endblock %}

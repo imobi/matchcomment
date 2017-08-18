@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+{% block title %}Profile{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+{% if admin %} <!-- Super admin access -->
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin">Admin Home</a>&nbsp;|&nbsp;<a href="/adminProfileAll">User Profiles Home</a></p>
+<hr>
+    <form id="profileAdminUpdate" action="profileAdminUpdate" method="post">
+        <input type="hidden" name="redirect" value="{{request.uri}}"/>
+        <input type="hidden" name="key" value="{{profile.key}}"/>
+        <fieldset>
+            <legend>Update User Profile</legend>
+            <label for="alias">Alias:</label>
+            <input name="alias" id="alias" type="text" value="{{profile.alias}}"/><br>
+            Login Mechanism: <select name="loginMechanism">
+                <option value="gmail" {% ifequal profile.loginMechanism.__str__ "gmail" %}selected{% endifequal %}>Gmail</option>
+                <option value="facebook" {% ifequal profile.loginMechanism.__str__ "facebook" %}selected{% endifequal %}>Facebook</option>
+            </select><br>
+            User Type: <select name="userType">
+                <option value="admin" {% ifequal profile.userType.__str__ "admin" %}selected{% endifequal %}>Administrator</option>
+                <option value="user" {% ifequal profile.userType.__str__ "user" %}selected{% endifequal %}>User</option>
+            </select><br>
+            <button type="submit">Update</button>
+        </fieldset>
+    </form>
+{% endif %}
+{% endblock %}

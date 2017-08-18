@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/samirf_capetown/!svn/ver/143/trunk/templates
+END
+leagueNew.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/44/trunk/templates/leagueNew.html
+END
+news.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/samirf_capetown/!svn/ver/124/trunk/templates/news.html
+END
+sportEdit.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/34/trunk/templates/sportEdit.html
+END
+sportHome.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/96/trunk/templates/sportHome.html
+END
+leagueListBySport.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/samirf_capetown/!svn/ver/136/trunk/templates/leagueListBySport.html
+END
+sportNew.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/samirf_capetown/!svn/ver/34/trunk/templates/sportNew.html
+END
+widget.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/123/trunk/templates/widget.html
+END
+leagueBySport.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/34/trunk/templates/leagueBySport.html
+END
+admin.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/132/trunk/templates/admin.html
+END
+countryselecttion.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/samirf_capetown/!svn/ver/73/trunk/templates/countryselecttion.html
+END
+teamNew.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/97/trunk/templates/teamNew.html
+END
+profile.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/samirf_capetown/!svn/ver/138/trunk/templates/profile.html
+END
+matchNew.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/samirf_capetown/!svn/ver/87/trunk/templates/matchNew.html
+END
+profileEdit.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/samirf_capetown/!svn/ver/124/trunk/templates/profileEdit.html
+END
+newsFeedEdit.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/100/trunk/templates/newsFeedEdit.html
+END
+home_1.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/143/trunk/templates/home_1.html
+END
+leagueEdit.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/samirf_capetown/!svn/ver/44/trunk/templates/leagueEdit.html
+END
+profileHome.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/samirf_capetown/!svn/ver/132/trunk/templates/profileHome.html
+END
+newsFeedHome.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/100/trunk/templates/newsFeedHome.html
+END
+facebookoauth.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/90/trunk/templates/facebookoauth.html
+END
+leagueHome.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/samirf_capetown/!svn/ver/131/trunk/templates/leagueHome.html
+END
+sportRequest.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/143/trunk/templates/sportRequest.html
+END
+janrainresult.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/samirf_capetown/!svn/ver/100/trunk/templates/janrainresult.html
+END
+include.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/71/trunk/templates/include.html
+END
+register.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/samirf_capetown/!svn/ver/21/trunk/templates/register.html
+END
+matches.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/32/trunk/templates/matches.html
+END
+team.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/samirf_capetown/!svn/ver/139/trunk/templates/team.html
+END
+home.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/samirf_capetown/!svn/ver/143/trunk/templates/home.html
+END
+commentsWidget.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/samirf_capetown/!svn/ver/123/trunk/templates/commentsWidget.html
+END
+loginTwitter.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/100/trunk/templates/loginTwitter.html
+END
+match.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/138/trunk/templates/match.html
+END
+teamEdit.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/138/trunk/templates/teamEdit.html
+END
+sitemap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/123/trunk/templates/sitemap.xml
+END
+teamHome.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/samirf_capetown/!svn/ver/96/trunk/templates/teamHome.html
+END
+facebooklogin.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/90/trunk/templates/facebooklogin.html
+END
+commentLikeView.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/samirf_capetown/!svn/ver/78/trunk/templates/commentLikeView.html
+END
+matchEdit.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/65/trunk/templates/matchEdit.html
+END
+sportList.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/71/trunk/templates/sportList.html
+END
+teamByLeague.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/samirf_capetown/!svn/ver/96/trunk/templates/teamByLeague.html
+END
+matchHome.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/samirf_capetown/!svn/ver/101/trunk/templates/matchHome.html
+END
+matchListByLeague.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/samirf_capetown/!svn/ver/136/trunk/templates/matchListByLeague.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/132/trunk/templates/index.html
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/118/trunk/templates/login.html
+END
+api.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/samirf_capetown/!svn/ver/143/trunk/templates/api.html
+END
+home_2.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/143/trunk/templates/home_2.html
+END
+newsFeedNew.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/samirf_capetown/!svn/ver/100/trunk/templates/newsFeedNew.html
+END
+template.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/138/trunk/templates/template.html
+END

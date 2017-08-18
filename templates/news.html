@@ -1,0 +1,38 @@
+{% extends "template.html" %}
+{% block title %}News{% endblock %}
+{% block pagetitle %}Home{% endblock %}
+
+{% block content %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>MatchComment.com Latest News</title>
+    <script src="https://www.google.com/jsapi?key=ABQIAAAA9rnot3rl-wVTg4l0tGhYohSvoHp1-RM-ldSwyCzSLq9ngX2vsxSnTI0pdkxzgxHPlPBcXO2iMeH5pw" type="text/javascript"></script>
+    <script language="Javascript" type="text/javascript">
+    //<![CDATA[
+        /*
+        *  How to use the Feed Control to grab, parse and display feeds.
+        */
+        google.load("feeds", "1");
+        function OnLoad() {
+          // Create a feed control
+          var feedControl = new google.feeds.FeedControl();
+          // Add two feeds.
+          feedControl.addFeed("http://www.supersport.com/rss/?site=2&cat=836", "Supersport");
+          //feedControl.addFeed("http://feeds.feedburner.com/Techcrunch", "TechCrunch");
+          feedControl.setNumEntries(10);
+          // Draw it.
+          feedControl.draw(document.getElementById("content"));
+        }
+        google.setOnLoadCallback(OnLoad);
+    //]]>
+    </script>
+  </head>
+  <body>
+      <center>
+        <a href="http://www.matchcomment.com">Back to Home Page Matchcomment.com</a>
+      </center>
+    <div id="content">Loading...</div>
+  </body>
+</html>
+{% endblock %}

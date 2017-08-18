@@ -1,0 +1,12 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+MATCH LIST HOME PAGE
+<ul>
+    {% for match in matches %}
+    <li><a href="/match?key={{match.key}}">{{match.name}}</a> - update | delete</li>
+    {% endfor %}
+</ul>
+{% endblock %}

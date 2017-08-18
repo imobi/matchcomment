@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+&nbsp;<a href="/match?key={{comment.match.key}}&redirect={{request.uri}}" style="font-size: 8pt;">{{comment.match.name}}</a>&nbsp;<span style="font-size: 8pt;">match</span>
+<a href="/profile?key={{comment.profile.key}}" style="font-size: 9pt;">{{comment.profile.alias}}</a>&nbsp;<span style="font-size: 8pt;">commented...&nbsp;<i>{{comment.text}}</i></a>
+<table border="0" cellpadding="5" cellspacing="5" border="1" class="viewprofile">
+    <tr>
+        <td valign="top">            
+            {% for like in comment.likes %}
+                <div style="padding: 1; line-height: 1;">
+                    <a href="/profileView?key={{like}}" style="font-size: 8pt;">{{like|getprofilealiasfromkey}}</a>&nbsp;<span style="font-size: 8pt;">likes this</span>
+                </div>
+            {% endfor %}
+            </ul>
+        </td>
+    </tr>
+</table>
+
+{% endblock %}

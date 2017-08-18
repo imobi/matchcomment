@@ -1,0 +1,233 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc
+END
+definition.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/definition.py
+END
+remote.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/remote.py
+END
+generate_python.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/generate_python.py
+END
+protojson_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/protojson_test.py
+END
+protobuf_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/protobuf_test.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/__init__.py
+END
+protobuf.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/protobuf.py
+END
+messages_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/messages_test.py
+END
+protorpc_test_pb2.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/protorpc_test_pb2.py
+END
+webapp_test_util.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/webapp_test_util.py
+END
+generate_proto_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/generate_proto_test.py
+END
+util.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/util.py
+END
+forms_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/forms_test.py
+END
+forms.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/forms.py
+END
+generate_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/generate_test.py
+END
+remote_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/remote_test.py
+END
+generate.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/generate.py
+END
+generate_python_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/generate_python_test.py
+END
+transport_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/transport_test.py
+END
+transport.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/transport.py
+END
+protojson.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/protojson.py
+END
+protourlencode_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/protourlencode_test.py
+END
+protourlencode.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/protourlencode.py
+END
+registry_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/registry_test.py
+END
+messages.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/messages.py
+END
+registry.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/registry.py
+END
+message_types.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/message_types.py
+END
+test_util.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/test_util.py
+END
+util_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/util_test.py
+END
+descriptor_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/descriptor_test.py
+END
+generate_proto.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/generate_proto.py
+END
+descriptor.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/descriptor.py
+END
+service_handlers_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/service_handlers_test.py
+END
+service_handlers.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/service_handlers.py
+END
+protorpc_test.proto
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/protorpc_test.proto
+END
+dynamic_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/dynamic_test.py
+END
+dynamic.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/dynamic.py
+END
+definition_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/samirf_capetown/!svn/ver/111/trunk/protorpc/definition_test.py
+END

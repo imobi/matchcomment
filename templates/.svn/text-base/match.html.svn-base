@@ -1,0 +1,246 @@
+{% extends "template.html" %}
+{% block title %}{{match.sideA.name}} ({{match.scoreA}}) vs {{match.sideB.name}} ({{match.scoreB}}) - {{match.league.sport.type}} - {{match.league.name}} LIVE{% endblock %}
+{% block pagetitle %}Match{% endblock %}
+
+{% block content %}
+<!-- Show pre-match, match and post match comments -->
+<!-- Differentiate with teams using colors -->
+<!-- REFRESH THIS PAGE every 20 seconds -->
+<div id="match">
+    {% ifequal profile.userType "admin" %}
+    <form id="matchScoreUpdate" action="matchScoreUpdate" method="post">
+        <input type="hidden" name="key" value="{{match.key}}"/>
+        <input type="hidden" name="redirect" value="{{request.uri}}"/>
+    {% endifequal %}
+    <div class="breadcrumb_navigation">
+        <a href="/">Sport&nbsp;></a>
+        <a href="/leagueListBySport?key={{match.league.sport.key}}">{{match.league.sport.type}}&nbsp;></a>
+        <a href="/matchListByLeague?key={{match.league.key}}&sportkey={{match.league.sport.key}}">{{match.league.name}}</a>
+    </div>
+    {% ifequal profile.userType "admin" %}
+    <form id="matchScoreUpdate" action="matchScoreUpdate" method="post">
+        <input type="hidden" name="key" value="{{match.key}}"/>
+        <input type="hidden" name="redirect" value="{{request.uri}}"/>
+    {% endifequal %}
+    <table width="280" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td width="140">
+                <table width="140" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="70" align="center" valign="top">
+                            <span class="matchhometeam">
+                                <a style="color: blue; font-size: 8pt;" href="/teamProfileView?key={{match.sideA.key}}">
+                                {% if match.sideA.avatar %}
+                                <img src="teamimg?team={{match.sideA.key}}" width="30" height="30" border="0">
+                                {% else %}
+                                <img src="/images/teamlogo.png" width="30" height="30" border="0">
+                                {% endif %}
+                                <br>{{match.sideA.name}}<br>tweets
+                                </a>
+                            </span>
+                        </td>
+                        <td width="70" align="center">
+                            {% ifequal profile.userType "admin" %}
+                            <input name="scoreA" id="scoreA" type="text" value="{{match.scoreA}}" size="3" style="width: 40px;" />
+                            {% else %}
+                            <b>{{match.scoreA}}</b>
+                            {% endifequal %}
+                            {% if user %}
+                            <br>
+                            <a href="/profileTeamSupportForMatch?match={{match.key}}&team={{match.sideA.key}}&redirect={{request.uri}}">
+                                <img src="/images/supportteama.png" border="0">
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="140">
+                <table width="140" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="70" align="center" valign="top">
+                            <span class="matchawayteam">
+                                <a style="color: green; font-size: 8pt;" href="/teamProfileView?key={{match.sideB.key}}">
+                                {% if match.sideB.avatar %}
+                                <img src="teamimg?team={{match.sideB.key}}" width="30" height="30" border="0">
+                                {% else %}
+                                <img src="/images/teamlogo.png" width="30" height="30" border="0">
+                                {% endif %}
+                                <br>{{match.sideB.name}}<br>tweets
+                                </a>
+                            </span>
+                        </td>
+                        <td width="70" align="center">
+                            {% ifequal profile.userType "admin" %}
+                            <input name="scoreB" id="scoreB" type="text" value="{{match.scoreB}}" size="3" style="width: 40px;" />
+                            {% else %}
+                            <b>{{match.scoreB}}</b>
+                            {% endifequal %}
+                            {% if user %}
+                            <br>
+                            <a href="/profileTeamSupportForMatch?match={{match.key}}&team={{match.sideB.key}}&redirect={{request.uri}}">
+                                <img src="/images/supportteamb.png" border="0">
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                {% ifequal profile.userType "admin" %}
+                <select name="matchPeriod">
+                    <option value="1st Half" {% ifequal match.matchPeriod.__str__ "1st Half" %}selected{% endifequal %}>1st Half</option>
+                    <option value="2nd Half" {% ifequal match.matchPeriod.__str__ "2nd Half" %}selected{% endifequal %}>2nd Half</option>
+                    <option value="Extra Time" {% ifequal match.matchPeriod.__str__ "Extra Time" %}selected{% endifequal %}>Extra Time</option>
+                </select>
+                {% else %}
+                <b>{{match.matchPeriod}}</b>
+                {% endifequal %}
+
+                {% ifequal profile.userType "admin" %}
+                <input type="submit" class="button" value="Update"/>
+                </form>
+                {% endifequal %}
+            </td>
+        </tr>
+    </table>
+    </form>
+
+    {% if user %}
+    <!-- Comment type -->
+    <!--
+    General<input type="radio" name="sidesupport" value="{{match.sideA}}">&nbsp;
+    Game Strategy<input type="radio" name="sidesupport" value="{{match.sideB}}">&nbsp;
+    Referee Decision<input type="radio" name="sidesupport" value="neutral">
+    -->
+    <form id="commentForm" action="commentAdd" method="post">
+        <input type="hidden" name="matchKey" value="{{match.key}}"/>
+        <input type="hidden" name="redirect" value="{{request.uri}}"/>
+        <input type="hidden" name="useralias" value="{{profile.alias}}"/>
+        <textarea cols="30" rows="4" id="comment" name="comment"></textarea><!-- cols 20 for opera mini -->
+        <br>
+        <input type="submit" value="comment" class="button">
+        <a href="{{request.uri}}">refresh</a>
+        <a href="http://m.facebook.com/sharer.php?u=http://www.matchcomment.com/match?key={{match.key}}&match={{match.sideA.name}}_{{match.sideB.name}}" id="matchcomment_link_facebook" alt="Facebook" target="_blank">
+            <img src="http://www.matchcomment.com/images/facebook_icon.png" alt="Facebook" title="Facebook" border="0" /></a>
+        <a href="http://m.twitter.com/home?status={{match.sideA.name}}%20vs%20{{match.sideB.name}}%20COMMENTS%20LIVE%20AT%20http://www.matchcomment.com/match?key={{match.key}}" id="matchcomment_link_twitter" alt="Twitter" target="_blank">
+            <img src="http://www.matchcomment.com/images/twitter_icon.png" alt="Twitter" title="Twitter" border="0" /></a>
+        <!--<span style="font-size: 8pt;"">twitter stream <a style="font-size: 8pt; " href="http://twitter.com/#!/search?q=%23{{match.name|replacestringspace:"_"}}" id="matchcomment_link_twitter" alt="Twitter" target="_blank">#{{match.name|replacestringspace:"_"}}</a></span>-->
+    </form>
+    
+    {% else %}
+        <!-- Login links -->
+        <span class="frontpageheading_top">To comment login via</span>
+        <a href="{{ login_url }}">Gmail&nbsp;<img src="images/google_icon.png" border="0" /></a>
+        <a href="/facebookLogin">Facebook&nbsp;<img src="images/facebook_icon.png" border="0" /></a>
+        <br><br>
+    {% endif %}
+
+    <span style="color:blue; font-size: 9pt;">@h</span><span style="font-size: 7pt;">&nbsp;(home team)</span>
+    <span style="color:green; font-size: 9pt;">@a</span><span style="font-size: 7pt;">&nbsp;(away team)</span>
+    <span style="color:red; font-size: 9pt;">@r</span><span style="font-size: 7pt;">&nbsp;(referee)</span><br>
+    
+    {% if user %} <!--show who you support -->
+        {% if teamSupportedInMatch %}
+        <span style="font-size: 8pt;">You support <b>{{teamSupportedInMatch.team.name}}</b> in this match</span><br>
+        {% else %}
+            <span style="font-size: 8pt; font-weight: bold;"><a href="/profileTeamSupportForMatch?match={{match.key}}&team={{match.sideA.key}}&redirect={{request.uri}}">I am a {{match.sideA.name}} supporter <img src="/images/like.png" border="0"></a></span><br>
+            <span style="font-size: 8pt; font-weight: bold;"><a href="/profileTeamSupportForMatch?match={{match.key}}&team={{match.sideB.key}}&redirect={{request.uri}}">I am a {{match.sideB.name}} supporter <img src="/images/like.png" border="0"></a></span><br>
+        {% endif %}
+        <span style="font-size: 8pt; font-weight: bold;"><a href="/profileTeamSupportForMatch?match={{match.key}}&team=&redirect={{request.uri}}">I am a neutral supporter <img src="/images/like.png" border="0"></a></span>
+    {% endif %}
+
+    <table width="280" cellpadding="2" cellspacing="2"><!-- opera mini width -->
+        {% for comment in comments %}
+        <tr>
+            <td class="matchcommenttext"><!--works {{ comment.text|lower|truncatewords:"1"|slice:":3" }}-->
+            {% if comment.user|getprofileavatarfromuser %}
+                <img src="profileimg?profile={{comment.profile.key}}" width="20" height="20" border="0">
+            {% else %}
+                {% ifequal profile.gender "Male" %}
+                    <img src="/images/silhouette.png" width="20" height="20" border="0">
+                {% else %}
+                    <img src="/images/female_silhouette.png" width="20" height="20" border="0">
+                {% endifequal %}
+            {% endif %}
+                <!-- Show which team the user supports begin -->
+                <!-- get the team the person supports from a tag -->
+                <!-- Show which team the user supports end -->
+                <a href="/profileView?key={{comment.profile.key}}&redirect={{request.uri}}">{{comment.profile.alias}}</a>
+                ({{ comment.profile|getprofileteamsupportedinmatch:match }})
+                {% ifequal comment.commenttype "@r" %}
+                    <span style="color:red;">{{comment.text}}</span>
+                {% else %}
+                    {% ifequal comment.commenttype "@h" %}
+                        <span style="color:blue;">{{comment.text}}</span>
+                    {% else %}
+                        {% ifequal comment.commenttype "@a" %}
+                            <span style="color:green;">{{comment.text}}</span>
+                        {% else %}
+                            {% ifequal comment.commenttype "checkin" %}
+                                <span>joined {{match.name}} match discussion</span>
+                            {% else %}
+                                {% ifequal comment.commenttype "teamsupport" %}
+                                    <span>is now a {{ comment.profile|getprofileteamsupportedinmatch:match }} supporter in this match</span>
+                                {% else %}
+                                    <span>{{comment.text}}</span>
+                                {% endifequal %}
+                            {% endifequal %}
+                        {% endifequal %}
+                    {% endifequal %}
+                {% endifequal %}
+                <!--<i class="matchlistdate">{{ comment.time|date:"j F Y \a\t P"}}</i>-->
+                <br><i class="matchlistdate">... {{comment.time|gettimediff}}&nbsp;</i>
+                {% if user %}
+                    {% if comment.likes %}
+                    <a href="/commentLikeView?commentkey={{comment.key}}&redirect={{request.uri}}" style="font-size: 8pt; font-weight: normal"><img src="/images/like.png" border="0">&nbsp;{{comment.likes|length}}</a>
+                    {% endif %}
+                    {% if profile.key|commentlikecheck:comment.key == "true" %}
+                        <a href="/commentUnLike?commentkey={{comment.key}}&redirect={{request.uri}}" style="font-size: 8pt;">unlike</a>
+                    {% endif %}
+                    {% if profile.key|commentlikecheck:comment.key == "false" %}
+                    <a href="/commentLike?commentkey={{comment.key}}&redirect={{request.uri}}" style="font-size: 8pt;">like</a>
+                    {% endif %}
+                {% endif %}
+                {% if admin%}
+                <a href="/commentDelete?commentkey={{comment.key}}&redirect={{request.uri}}" style="font-size: 8pt;">(remove)</a>
+                {% endif %}
+                 <!-- option to remove comment by commenter as well -->
+                {% ifequal comment.profile.key profile.key %}
+                <a href="/commentDelete?commentkey={{comment.key}}&redirect={{request.uri}}" style="font-size: 8pt;">remove</a>
+                {% endifequal %} <!-- Shorten tweet with readmore link linking to matchcomment.com -->
+                <a style="font-size: 8pt;" href="http://m.twitter.com/home?status={{comment.text}}%20via%20http://www.matchcomment.com/match?key={{match.key}}" id="matchcomment_link_twitter" alt="Twitter" target="_blank">(tweet)</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+<!-- page numbers begin -->
+{% if pages|length > 1 %}
+<table width="280" cellpadding="2" cellspacing="2"><!-- opera mini width -->
+    <tr>
+        <td>
+            <span style="font-size: 10pt; font-weight: bold; font-family: tahoma; color: #3B5998;">
+                More Comments ...
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {% for i in pages %}
+                {% ifequal i page %}
+                    {{ i }}
+                {% else %}
+                    <a href="/match?key={{match.key}}&page={{i}}">{{ i }}</a>
+                {% endifequal %}
+            {% endfor %}
+        </td>
+    </tr>
+</table>
+{% endif %}
+<!-- page numbers end -->
+
+</div>
+<br>
+{% endblock %}

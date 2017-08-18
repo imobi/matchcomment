@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /
+
+User-Agent: Googlebot
+Disallow: /
+
+# Deny Soso spider in the site
+User-agent: Soso
+Disallow: /
+
+User-agent: Sosospider
+Disallow: /

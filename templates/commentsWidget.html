@@ -1,0 +1,97 @@
+<style TYPE="text/css" MEDIA=screen>
+<!--
+	div#matchcomment_widget {
+		border: 1px solid #E3E9F2;
+		clear:both;
+		width: 230px;
+	}
+	a:visited {
+		color:#3B5998;
+	}
+	#matchcomment_widget_comments {
+		overflow: scroll;
+		height: 300px;
+	}
+	h1.matchcomment_widget_frontpageheading {
+		background-color: #E3E9F2;
+		color:#3B5998;
+		font-size: 11px;
+		margin: 0px;
+		padding: 3px;
+	}
+	ul#matchcomment_widget_commentlist {
+		list-style: none;
+		padding: 0px 0px 0px 5px;
+	}
+	li.matchcommenttext {
+		border-bottom: 1px dotted #DDDDDD;
+	}
+	.matchcomment_widget_poster {
+		color:#3B5998;
+		font-size: 10px;
+		font-weight:bold;
+	}
+	.matchcomment_widget_comment {
+		color:#444444;
+		font-size: 10px;
+		font-weight:bold;
+	}
+	.matchcomment_widget_comment_date {
+		font-size: 8px;
+	}
+	.matchcomment_widget_comment_view {
+		color:#3B5998;
+		font-size: 8px;
+		padding-right: 3px;
+	}
+	.r {
+		color: red;
+	}
+	.h {
+		color: blue;
+	}
+	.a {
+		color: green;
+	}
+-->
+</style>
+<div id="matchcomment_widget">
+<h1 class="matchcomment_widget_frontpageheading">
+Latest from
+<br>
+<a href="http://matchcomment.appspot.com/">Match Comment</a>
+</h1>
+<div id="matchcomment_widget_comments">
+<ul id="matchcomment_widget_commentlist" style="list-style:none;">
+    {% for comment in comments %}
+    <li class="matchcommenttext">
+
+    		 <span class="matchcomment_widget_poster">{{comment.profile.alias}}</span>
+            {% ifequal comment.commenttype "@r" %}
+                <span class="matchcomment_widget_comment r">{{comment.text}}</span>
+            {% else %}
+                {% ifequal comment.commenttype "@h" %}
+                    <span class="matchcomment_widget_comment h">{{comment.text}}</span>
+                {% else %}
+                    {% ifequal comment.commenttype "@a" %}
+                        <span class="matchcomment_widget_comment a">{{comment.text}}</span>
+                    {% else %}
+                        <span class="matchcomment_widget_comment">{{comment.text}}</span>
+                    {% endifequal %}
+                {% endifequal %}
+            {% endifequal %}
+            <br>
+            <a style="font-size: 7pt; font-style: normal;" href='http://matchcomment.appspot.com/match?key={{comment.match.key}}&sport={{comment.match.sport.type|replacestringspace:"_"}}&league={{comment.match.league.name|replacestringspace:"_"}}&match={{comment.match.name|replacestringspace:"_"}}'>{{comment.match.name}}</a>
+    		<br>
+           <span class="matchcomment_widget_comment_date">posted {{comment.time|gettimediff}}</span>
+           <span class="matchcomment_widget_comment_view"><a href="http://matchcomment.appspot.com/">View</a></span>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+<h1 class="matchcomment_widget_frontpageheading">
+Join us at
+<br>
+<a href="http://matchcomment.appspot.com/">Match Comments</a>		 
+</h1>
+</div>

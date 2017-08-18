@@ -1,0 +1,352 @@
+body {
+    background-color: white;
+    margin:0;
+    padding:0;
+    font-family: tahoma, verdana, arial;
+    font-size: 13pt;
+    font-style: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-variant: normal;
+    /* form buttons */
+}
+
+.bodywrapper {
+    width: 280px; /* opera mini width */
+        border-width:1px;
+        border-color:#3B5998;
+        border-style:solid;
+}
+
+.slogan {
+    font-family: tahoma, verdana, arial;
+    font-size: 8pt;
+    font-style: normal;
+    line-height: 0px;
+    font-weight: normal;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: #011847;
+}
+
+.frontpageheading {
+	font-family: tahoma, verdana, arial;  /* The font family Helvetica, courier etc... */
+	font-size: 10pt;                      /* The size of the text */
+	font-style: normal;                   /* inherit, italic, normal, oblique */
+	line-height: normal;                  /* the line height inherit or normal */
+	font-weight: bold;                  /* bold, bolder inherit, lighter, normal or a value like 100 */
+	font-variant: normal;									/* inherit, normal, smallcaps */
+	color: #3B5998; 													/* Text colour, e.g. red, blue, green or code #FFFFFF */
+	text-decoration: none;                /* blink, inherit, line-through, underline, overline, none */
+        border-width:1px;
+        border-color:#3B5998;
+        border-style:solid;
+        background : #E3E9F2;
+
+}
+
+.frontpageheading_top {
+	font-family: tahoma, verdana, arial;  /* The font family Helvetica, courier etc... */
+	font-size: 10pt;                      /* The size of the text */
+	font-style: normal;                   /* inherit, italic, normal, oblique */
+	line-height: normal;                  /* the line height inherit or normal */
+	font-weight: bold;                  /* bold, bolder inherit, lighter, normal or a value like 100 */
+	font-variant: normal;									/* inherit, normal, smallcaps */
+	color: #011847; 													/* Text colour, e.g. red, blue, green or code #FFFFFF */
+	text-decoration: none;                /* blink, inherit, line-through, underline, overline, none */
+}
+
+.matchhometeam {
+    font-family: tahoma, verdana, arial;
+    font-size: 8pt;
+    font-style: normal;
+    line-height: 0px;
+    font-weight: bold;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 3px;
+    color: blue;
+}
+
+.matchawayteam {
+    font-family: tahoma, verdana, arial;
+    font-size: 8pt;
+    font-style: normal;
+    line-height: 0px;
+    font-weight: bold;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    color: green;
+}
+
+.logo {
+    font-family: tahoma, verdana, arial;
+    font-size: 6pt;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    color: #011847;
+    padding:0px;
+}
+
+.breadcrumb_navigation {
+	background : #F2F5F8;
+	overflow : auto;
+        border-width:1px;
+        border-color:#3B5998;
+        border-style:solid;
+        border-top:0;
+}
+
+.top_main_navigation {
+	background : #E3E9F2;
+        padding : 3px;
+	overflow : auto;
+        border-width:1px;
+        border-color:#3B5998;
+        border-style:solid;
+        border-top:0;
+        font-size: 8pt;
+}
+
+.topmenutext {
+	font-family: tahoma, verdana, arial;  /* The font family Helvetica, courier etc... */
+	font-size: 10pt;                      /* The size of the text */
+	font-style: normal;                   /* inherit, italic, normal, oblique */
+	line-height: normal;                  /* the line height inherit or normal */
+	font-weight: bold;                  /* bold, bolder inherit, lighter, normal or a value like 100 */
+	font-variant: normal;									/* inherit, normal, smallcaps */
+	color: #3B5998; 													/* Text colour, e.g. red, blue, green or code #FFFFFF */
+	text-decoration: none;                /* blink, inherit, line-through, underline, overline, none */
+}
+
+.frontpage_fixture_list {
+	padding : 0px;
+	overflow : auto;
+}
+
+.frontpage_fixture_list_live_span {
+    font-family: tahoma, verdana, arial;
+    font-size: 7pt;
+    font-style: normal;
+    line-height: normal;
+    font-weight: bold;
+    font-variant: normal;
+    background : #E3E9F2;
+    border-color: #FF0000;
+    color: #FF0000;
+}
+
+.frontpage_fixture_date_span {
+    font-family: tahoma, verdana, arial;
+    font-size: 8pt;
+    line-height: normal;
+    font-weight: normal;
+    font-variant: normal;
+    color: #000000;
+}
+
+.frontpage_fixture_list_fans_span {
+    font-family: tahoma, verdana, arial;
+    font-size: 7pt;
+    font-style: normal;
+    line-height: normal;
+    font-weight: bold;
+    font-variant: normal;
+    background : #E3E9F2;
+    border-color: #FF0000;
+    color: #058802;
+}
+
+.frontpage_fixture_list_bookmark_span {
+    font-family: tahoma, verdana, arial;
+    font-size: 7pt;
+    font-style: normal;
+    line-height: normal;
+    font-weight: bold;
+    font-variant: normal;
+    background : #E3E9F2;
+    border-color: #FF0000;
+    color: #FF0000;
+}
+
+.frontpage_sport_league_selection {
+	padding-left: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+	overflow : auto;
+}
+
+.top_sub_navigation {
+	background : #E3E9F2;
+	padding : 3px;
+	overflow : auto;
+        border-width:1px;
+        border-color:#3B5998;
+        border-style:solid;
+}
+
+.footer {
+        background : #E3E9F2;
+	padding : 3px;
+	overflow : auto;
+        border-width:1px;
+        border-color:#3B5998;
+        border-style:solid;
+	font-family: tahoma, verdana, arial;
+	font-size: 7pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #3B5998; 													/* Text colour, e.g. red, blue, green or code #FFFFFF */
+}
+
+.page_layout {
+	background : #E3E9F2;
+	padding : 3px;
+	overflow : auto;
+        border-width:1px;
+        border-color:#3B5998;
+        border-style:solid;
+        border-top:0;
+	font-family: tahoma, verdana, arial;  /* The font family Helvetica, courier etc... */
+	font-size: 11pt;                      /* The size of the text */
+	font-style: normal;                   /* inherit, italic, normal, oblique */
+	line-height: normal;                  /* the line height inherit or normal */
+	font-weight: bold;                  /* bold, bolder inherit, lighter, normal or a value like 100 */
+	font-variant: normal;									/* inherit, normal, smallcaps */
+	color: 000000; 													/* Text colour, e.g. red, blue, green or code #FFFFFF */
+}
+
+.button {background:#5b74a8;border-color:#8a9ac5 #29447E #1a356e;color:#fff}
+
+.liststyle {line-height: 0; padding-top: 0; padding-bottom: 0;}
+
+.matchliststyle {
+    font-family: tahoma, verdana, arial;
+    font-size: 10pt;
+    font-style: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-variant: normal;
+    color: #011847;
+    padding : 0px;
+    line-height: 0;
+}
+
+.matchlistdate {
+    font-family: tahoma, verdana, arial;
+    font-size: 7pt;
+    font-style:italic;
+    font-weight: normal;
+    font-variant: normal;
+}
+
+.matchcommenttext {
+	font-family: tahoma, verdana, arial;  /* The font family Helvetica, courier etc... */
+	font-size: 10pt;                      /* The size of the text */
+	font-style: normal;                   /* inherit, italic, normal, oblique */
+	line-height: normal;                  /* the line height inherit or normal */
+	font-weight: normal;                  /* bold, bolder inherit, lighter, normal or a value like 100 */
+	font-variant: normal;									/* inherit, normal, smallcaps */
+	color: #000000; 													/* Text colour, e.g. red, blue, green or code #FFFFFF */
+	text-decoration: none;                /* blink, inherit, line-through, underline, overline, none */
+        clear:right;
+        width: 200px; /* opera mini width */
+        border-width:1px;
+        border-color:#3B5998;
+        border-style:solid;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+}
+
+.viewprofile {
+	font-family: tahoma, verdana, arial;  /* The font family Helvetica, courier etc... */
+	font-size: 10pt;                      /* The size of the text */
+	font-style: normal;                   /* inherit, italic, normal, oblique */
+	line-height: normal;                  /* the line height inherit or normal */
+	font-weight: normal;                  /* bold, bolder inherit, lighter, normal or a value like 100 */
+	font-variant: normal;									/* inherit, normal, smallcaps */
+	color: #000000; 													/* Text colour, e.g. red, blue, green or code #FFFFFF */
+	text-decoration: none;                /* blink, inherit, line-through, underline, overline, none */
+        clear:right;
+        width: 250px;
+        border-width:0px;
+        border-color:#3B5998;
+        border-style:solid;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+}
+
+a:link {
+	font-family: tahoma, verdana, arial;  /* The font family Helvetica, courier etc... */
+	font-size: 10pt;                      /* The size of the text */
+	font-style: normal;                   /* inherit, italic, normal, oblique */
+	line-height: normal;                  /* the line height inherit or normal */
+	font-weight: bold;                  /* bold, bolder inherit, lighter, normal or a value like 100 */
+	font-variant: normal;									/* inherit, normal, smallcaps */
+	color: #3B5998; 													/* Text colour, e.g. red, blue, green or code #FFFFFF */
+	text-decoration: none;                /* blink, inherit, line-through, underline, overline, none */
+}
+
+a:hover {
+  font-family: tahoma, verdana, arial;
+  font-size: 10pt;
+  font-style: normal;
+  line-height: normal;
+  font-weight: bold;
+  font-variant: normal;
+  color: #3B5998;
+  text-decoration:underline;
+}
+
+a:visited {
+  font-family: tahoma, verdana, arial;
+  font-size: 10pt;
+  font-style: normal;
+  line-height: normal;
+  font-weight: normal;
+  font-variant: normal;
+  color: #3B5998;
+  text-decoration: none;
+}
+
+.frontpage_text {
+  font-family: tahoma, verdana, arial;
+  font-size: 10pt;
+  font-style: normal;
+  line-height: normal;
+  font-weight: normal;
+  font-variant: normal;
+  color: #3B5998;
+  text-decoration: none;
+}
+
+.matchcommentlogo {
+    float: left;
+    margin: 0;
+    padding-top: 0;
+    font-family: Arial,Verdana,Helvetica,san-serif;
+    font-size: 15pt;
+    font-weight: bold;
+}
+
+.match_frontpage_link {
+	font-family: tahoma, verdana, arial;  /* The font family Helvetica, courier etc... */
+	font-size: 10pt;                      /* The size of the text */
+	font-style: normal;                   /* inherit, italic, normal, oblique */
+	line-height: normal;                  /* the line height inherit or normal */
+	font-weight: bold;                  /* bold, bolder inherit, lighter, normal or a value like 100 */
+	font-variant: normal;									/* inherit, normal, smallcaps */
+	color: #3B5998; 													/* Text colour, e.g. red, blue, green or code #FFFFFF */
+	text-decoration: none;                /* blink, inherit, line-through, underline, overline, none */
+        display: inline;
+}

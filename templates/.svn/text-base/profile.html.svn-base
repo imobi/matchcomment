@@ -1,0 +1,207 @@
+{% extends "template.html" %}
+{% block title %}{{profile.alias}} - MatchComment{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+{% if showprofile %}
+<table border="0" cellpadding="5" cellspacing="5" class="viewprofile">
+    <tr>
+        <td valign="top" width="100">
+            {% if profile.avatar %}
+            <img src="profileimg?profile={{profile.key}}" width="80" height="80" border="0">
+            {% else %}
+                {% ifequal profile.gender "Male" %}
+                    <img src="/images/silhouette.png" width="80" height="80" border="0">
+                {% else %}
+                    <img src="/images/female_silhouette.png" width="80" height="80" border="0">
+                {% endifequal %}
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <a href="/profileFanAdd?key={{profile.key}}&redirect={{request.uri}}">Follow {{profile.alias}}</a><br><br>
+            <b>About {{profile.alias}}:</b><br><br>
+            <b>Name:</b>&nbsp;{{profile.name}}&nbsp;{{profile.surname}}<br>
+            <b>Gender:</b>&nbsp;{{profile.gender}}<br>
+            <b>Country</b>&nbsp;{{profile.country}}<br>
+            <b>City:</b>&nbsp;{{profile.city}}<br>
+            <b>Sport:</b>&nbsp;{{profile.sportPreference.type}}<br><br>
+            <b>{{profile.alias}}'s matches:</b>
+            <ul style="padding: 1; line-height: 0.5;">
+            {% for match in matchFavourites %}
+                <li style="padding: 0; line-height: 0;">
+                    <a href="/match?key={{match.key}}" style="font-size: 8pt;">{{match.name}}</a>
+                    {% if user %}
+                    &nbsp;-&nbsp;<a href="/profileMatchAdd?key={{match.key}}&redirect={{request.uri}}" style="font-size: 8pt;">join</a>
+                    {% endif %}
+                </li><br>
+            {% endfor %}
+            </ul>
+            <b>{{profile.alias}}'s teams:</b>
+            <ul style="padding: 1; line-height: 0.5;">
+            {% for team in teams %}
+                <li style="padding: 0; line-height: 0;">
+                    <a href="/teamProfileView?key={{team.key}}" style="font-size: 8pt;">{{team.name}}</a>
+                    {% if user %}
+                    &nbsp;-&nbsp;<a href="/profileTeamAdd?key={{team.key}}&redirect={{request.uri}}" style="font-size: 8pt;">connect</a>
+                    {% endif %}
+                </li><br>
+            {% endfor %}
+            </ul>
+            <b>{{profile.alias}}'s fan connections:</b>
+            <ul style="padding: 1; line-height: 0.5;">
+            {% for fan in followers %}
+                <li style="padding: 0; line-height: 0;">
+                    <a href="/profileView?key={{fan.key}}&redirect={{request.uri}}&fromprofile=true" style="font-size: 8pt;">{{fan.alias}}</a>
+                    {% if user %}
+                    &nbsp;-&nbsp;<a href="/profileFanAdd?key={{fan.key}}&redirect={{request.uri}}" style="font-size: 8pt;">connect</a>
+                    {% endif %}
+                </li><br>
+            {% endfor %}
+            </ul>
+            <b>{{profile.alias}}'s comments:</b>
+            <table width="300" cellpadding="2" cellspacing="2"><!-- opera mini width -->
+                {% for comment in comments %} <!-- top 5 comments -->
+                    {% if comment.match %} <!-- if match entity exists for commment -->
+                    <tr>
+                        <td class="matchcommenttext"><!--works {{ comment.text|lower|truncatewords:"1"|slice:":3" }}-->
+                            <!-- Sport and Match Name -->
+                            <span style="font-size: 7pt; font-style: normal;">{{comment.match.league.sport.type}}&nbsp;>{{comment.match.league.name}}&nbsp;></span>
+                            <a style="font-size: 7pt; font-style: normal;" href="/match?key={{comment.match.key}}">{{comment.match.name}}</a>
+                            <br>
+                            <a style="font-size: 7pt;" href="/profileView?key={{comment.key}}&redirect={{request.uri}}">{{comment.useralias}}</a>&nbsp;<span style="font-size: 7pt; font-style: normal;">...<span>
+                            {% ifequal comment.commenttype "@r" %}
+                                <span style="color:red; font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                            {% else %}
+                                {% ifequal comment.commenttype "@h" %}
+                                    <span style="color:blue; font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                                {% else %}
+                                    {% ifequal comment.commenttype "@a" %}
+                                        <span style="color:green; font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                                    {% else %}
+                                        <span style="font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                                    {% endifequal %}
+                                {% endifequal %}
+                            {% endifequal %}
+                            <br><i class="matchlistdate">... {{comment.time|gettimediff}}&nbsp;</i>
+                            <a style="font-size: 7pt; font-style: normal;" href="/match?key={{comment.match.key}}">join commentary</a>
+                            {% if admin %}
+                            <a href="/commentDelete?key={{comment.key}}&redirect={{request.uri}}" style="font-size: 8pt;">remove</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                        {% endif %}
+                    {% endfor %}
+            </table>
+        </td>
+    </tr>
+</table>
+
+{% else %}
+<a href="/profileView?key={{profile.key}}&redirect={{request.uri}}&fromprofile=true">Show Profile View</a>
+<div id="profile">
+<form id="profileUpdate" enctype="multipart/form-data" action="profileUpdate" method="post">
+    <input type="hidden" name="key" value="{{profile.key}}"/>
+    <input type="hidden" name="redirect" value="{{request.uri}}"/>
+    {% if profile.avatar %}
+    <img src="profileimg?profile={{profile.key}}" width="80" height="80" border="0">
+    {% else %}
+        {% ifequal profile.gender "Male" %}
+            <img src="/images/silhouette.png" width="80" height="80" border="0">
+        {% else %}
+            <img src="/images/female_silhouette.png" width="80" height="80" border="0">
+        {% endifequal %}
+    {% endif %}<br>
+    Avatar: <input type="file" id="text" name="avatar" value=""><br>
+    Nickname: <input type="text" id="text" name="alias" value="{{profile.alias}}"><br>
+    Name: <input type="text" id="text" name="name" value="{{profile.name}}"><br>
+    Surname: <input type="text" id="text" name="surname" value="{{profile.surname}}"><br>
+    Email: <input type="text" id="text" name="email" value="{{profile.email}}"> (email notifications)<br>
+    Mobile: <input type="text" id="text" name="mobile" value="{{profile.mobile}}"> (sms notifications format +27830000000)<br>
+    Gender:<select name="gender"><option value="Female" {% ifequal profile.gender 'Female' %}selected{% endifequal %}>Female</option><option value="Male" {% ifequal profile.gender 'Male' %}selected{% endifequal %}>Male</option></select><br>
+    News Feed Items:<select name="newsItemCount">
+                    <option value="1" {% ifequal profile.newsItemCount '1' %}selected{% endifequal %}>1</option>
+                    <option value="2" {% ifequal profile.newsItemCount '2' %}selected{% endifequal %}>2</option>
+                    <option value="3" {% ifequal profile.newsItemCount '3' %}selected{% endifequal %}>3</option>
+                    <option value="4" {% ifequal profile.newsItemCount '4' %}selected{% endifequal %}>4</option>
+                    <option value="5" {% ifequal profile.newsItemCount '5' %}selected{% endifequal %}>5</option>
+                    <option value="6" {% ifequal profile.newsItemCount '6' %}selected{% endifequal %}>6</option>
+                    <option value="7" {% ifequal profile.newsItemCount '7' %}selected{% endifequal %}>7</option>
+                    <option value="8" {% ifequal profile.newsItemCount '8' %}selected{% endifequal %}>8</option>
+                    <option value="9" {% ifequal profile.newsItemCount '9' %}selected{% endifequal %}>9</option>
+                    <option value="10" {% ifequal profile.newsItemCount '10' %}selected{% endifequal %}>10</option>
+                  </select>
+    <br>
+    <!--Country: <input type="text" id="text" name="country" value="{{profile.country}}"><br>-->
+    Country: <select name="country">
+        <option value="None" {% ifequal profile.country 'None' %}selected{% endifequal %}>None</option>
+        <option value="South Africa" {% ifequal profile.country 'South Africa' %}selected{% endifequal %}>South Africa</option>
+        <option value="Australia" {% ifequal profile.country 'Australia' %}selected{% endifequal %}>Australia</option>
+        <option value="England" {% ifequal profile.country 'England' %}selected{% endifequal %}>England</option>
+        <option value="Namibia" {% ifequal profile.country 'Namibia' %}selected{% endifequal %}>Namibia</option>
+        <option value="New Zealand" {% ifequal profile.country 'New Zealand' %}selected{% endifequal %}>New Zealand</option>
+        <option value="United States" {% ifequal profile.country 'United States' %}selected{% endifequal %}>United States</option>        
+    </select><br>
+    <!--City: <input type="text" id="text" name="city" value="{{profile.city}}">-->
+    City:<select name="city">
+        <option value="None" {% ifequal profile.city 'None' %}selected{% endifequal %}>None</option>
+        <option value="Cape Town" {% ifequal profile.city 'Cape Town' %}selected{% endifequal %}>Cape Town</option>
+        <option value="Johannesburg" {% ifequal profile.city 'Johannesburg' %}selected{% endifequal %}>Johannesburg</option>
+        <option value="Durban" {% ifequal profile.city 'Durban' %}selected{% endifequal %}>Durban</option>
+        <option value="Germiston" {% ifequal profile.city 'Germiston' %}selected{% endifequal %}>Germiston</option>
+        <option value="Pretoria" {% ifequal profile.city 'Pretoria' %}selected{% endifequal %}>Pretoria</option>
+        <option value="Port Elizabeth" {% ifequal profile.city 'Port Elizabeth' %}selected{% endifequal %}>Port Elizabeth</option>
+        <option value="East London" {% ifequal profile.city 'East London' %}selected{% endifequal %}>East London</option>
+    </select><br>
+    Sport Preference:
+    <select name="sportPreference">
+        <!--make default None-->
+        {% for sport in sports %}
+        <option value="{{sport.key}}" {% ifequal sport.key profile.sportPreference.key %}selected{% endifequal %}>{{sport.type}}</option>
+        {% endfor %}
+    </select><br>
+    League Preference:
+    <select name="leaguePreference">
+        <!--make default None-->
+        <option value="None">None</option>
+        {% for league in leagues %}
+        <option value="{{league.key}}" {% ifequal league.key profile.leaguePreference.key %}selected{% endifequal %}>{{league.name}}</option>
+        {% endfor %}
+    </select><br>
+    Team:<br>
+    Login Mechanism: <select name="loginMechanism">
+        <option value="gmail" {% ifequal profile.loginMechanism.__str__ "gmail" %}selected{% endifequal %}>Gmail</option>
+        <option value="facebook" {% ifequal profile.loginMechanism.__str__ "facebook" %}selected{% endifequal %}>Facebook</option>
+    </select><br>
+    <input type="submit" value="update" class="button">
+</form>
+
+<br>
+<b>Match Reminders</b>
+<ul>
+{% for match in matchFavourites %}
+<li><a href="/match?key={{match.key}}">{{match.name}}</a>&nbsp;-&nbsp;<a href="/profileMatchDelete?key={{match.key}}&redirect={{request.uri}}">remove</a></li>
+{% endfor %}
+</ul>
+
+<b>Teams</b>
+<ul>
+{% for team in teams %}
+<li><a href="/team?key={{team.key}}">{{team.name}}</a>&nbsp;-&nbsp;<a href="/profileTeamDelete?key={{team.key}}&redirect={{request.uri}}">remove</a></li>
+{% endfor %}
+</ul>
+
+<b>Fan connections</b>
+<ul>
+{% for fan in followers %}
+<li><a href="/profile?key={{fan.key}}">{{fan.alias}}</a>&nbsp;-&nbsp;<a href="/profileFanDelete?key={{fan.key}}&redirect={{request.uri}}">remove</a></li>
+{% endfor %}
+</ul>
+
+</div>
+    
+{% endif %}
+
+{% endblock %}

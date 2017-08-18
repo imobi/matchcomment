@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin">Admin Home</a>&nbsp;|&nbsp;<a href="/adminLeagueAll">League Home</a></p>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/leagueNew">Add League</a></p>
+<p></p>
+<ul>
+    {% for league in leagues %}
+    <li>
+        <a href="/leagueEdit?key={{league.key}}">{{league.name}}</a>&nbsp;-&nbsp;
+        <a href="/matchNew?matchleaguekey={{league.key}}">Add Match</a>&nbsp;-&nbsp;<!--&nbsp;-&nbsp;<a href="/leagueDelete?key={{league.key}}">Delete</a>-->
+        <a href="/leagueAddTeam?key={{league.key}}">Add Team</a>&nbsp;-&nbsp;
+    </li>
+    {% endfor %}
+</ul>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/leagueNew">Add League</a></p>
+
+{% endblock %}

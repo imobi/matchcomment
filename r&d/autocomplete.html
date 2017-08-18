@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  
+  <script>
+  $(document).ready(function() {
+    $("textarea#autocomplete").autocomplete({
+    source: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby"]
+});
+  });
+  </script>
+
+
+ul.auto-list{
+display: none;
+position: absolute;
+top: 0px;
+left: 0px;
+border: 1px solid green;
+background-color: #A3DF99;
+padding: 0;
+margin:0;
+list-style:none;
+}
+ul.auto-list > li:hover,
+ul.auto-list > li[data-selected=true]{
+background-color: #236574;
+}
+
+ul.auto-list > li{
+border: 1px solid gray;
+cursor: default;
+padding: 2px;
+
+}
+
+mark{
+font-weight: bold;
+}
+
+
+</head>
+<body style="font-size:62.5%;">
+  
+<textarea cols="30" rows="4" id="autocomplete" name="autocomplete"></textarea>
+
+
+
+	
+	
+	
+	
+	<script>
+	$(function() {
+		var availableTags = [
+			"ActionScript",
+			"AppleScript",
+			"Asp",
+			"BASIC",
+			"C",
+			"C++",
+			"Clojure",
+			"COBOL",
+			"ColdFusion",
+			"Erlang",
+			"Fortran",
+			"Groovy",
+			"Haskell",
+			"Java",
+			"JavaScript",
+			"Lisp",
+			"Perl",
+			"PHP",
+			"Python",
+			"Ruby",
+			"Scala",
+			"Scheme"
+		];
+		function split( val ) {
+			return val.split( /,\s*/ );
+		}
+		function extractLast( term ) {
+			return split( term ).pop();
+		}
+
+		$( "#tags" )
+			// don't navigate away from the field on tab when selecting an item
+			.bind( "keydown", function( event ) {
+				if ( event.keyCode === $.ui.keyCode.TAB &&
+						$( this ).data( "autocomplete" ).menu.active ) {
+					event.preventDefault();
+				}
+			})
+			.autocomplete({
+				minLength: 0,
+				source: function( request, response ) {
+					// delegate back to autocomplete, but extract the last term
+					response( $.ui.autocomplete.filter(
+						availableTags, extractLast( request.term ) ) );
+				},
+				focus: function() {
+					// prevent value inserted on focus
+					return false;
+				},
+				select: function( event, ui ) {
+					var terms = split( this.value );
+					// remove the current input
+					terms.pop();
+					// add the selected item
+					terms.push( ui.item.value );
+					// add placeholder to get the comma-and-space at the end
+					terms.push( "" );
+					this.value = terms.join( ", " );
+					return false;
+				}
+			});
+	});
+	</script>
+
+
+
+<div class="demo">
+
+<div class="ui-widget">
+	<label for="tags">Tag programming languages: </label>
+	<input id="tags" size="50" />
+</div>
+
+</div><!-- End demo -->
+
+
+
+<div class="demo-description">
+<p>Usage: Type something, eg. "j" to see suggestions for tagging with programming languages. Select a value, then continue typing to add more.</p>
+<p>This is an example showing how to use the source-option along with some events to enable autocompleting multiple values into a single field.</p>
+</div><!-- End demo-description -->
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends "template.html" %}
+{% block title %}{{team.name}} - MatchComment{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+<table border="0" cellpadding="5" cellspacing="5" class="viewteamprofile">
+    <tr>
+        <td valign="top" align="center">
+            {% if team.avatar %}
+            <img src="teamimg?team={{team.key}}" width="80" height="80" border="0">
+            {% else %}
+            <img src="/images/teamlogo.png" width="80" height="80" border="0">
+            {% endif %}<br>
+            {% if user %}
+                <a href="/profileTeamAdd?key={{team.key}}&redirect={{request.uri}}">Follow {{team.name}}</a>
+            {% endif%}
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">            
+            <b>{{team.name}} latest tweets:</b>&nbsp;<a href="{{request.uri}}">refresh</a><br>
+            <!--<div id="twitter">
+                <ul id="twitter_update_list"></ul>
+                <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+                <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/{{team.twitterid}}.json?callback=twitterCallback2&count=4"></script>
+            </div>
+            -->
+            {% for message in messages %}
+                <span style="font-size: 8;">{{message}}</span><hr>
+            {% endfor %} <!-- TwitterError: Rate limit exceeded. Clients may not make more than 150 requests per hour -->
+            <b>Sport:</b> {{team.sport.type}}<br>
+            <b>League:</b>&nbsp;{{team.league.name}}<br>
+            <b>Club: </b>&nbsp;{{team.club}}<br>
+            <b>Country</b>&nbsp;{{team.country}}<br>
+            <b>City:</b>&nbsp;{{team.city}}<br>
+            <b>Homeground:</b>&nbsp;{{team.homeground}}<br>
+            <b>{{team.name}} players:</b><br>
+            <b>{{team.name}} top followers:</b><br> <!-- most comments -->
+        </td>
+    </tr>
+</table>
+
+{% endblock %}

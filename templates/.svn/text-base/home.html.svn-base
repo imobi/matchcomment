@@ -1,0 +1,126 @@
+{% block content %}
+<p>Watch out for the new MatchComment launching 2012
+<table width="280" border="0" cellpadding="0" cellspacing="0" class="frontpage_sport_league_selection">
+    {% if showsportlinks == 1 %}
+    <tr>
+        <td valign="top" width="50">
+            <span class="frontpageheading_top">Sport&nbsp;</span>
+        </td>
+        <td valign="middle" align="left">
+            {% for sport in sports %}
+                {% if sportselected.type == sport.type %}
+                <a style="font-size: 8pt; font-style: normal; text-decoration: underline;" href="/leagueListBySport?key={{sport.key}}">{{sport.type}},</a>
+                {% else %}
+                <a style="font-size: 8pt; font-style: normal;" href="/leagueListBySport?key={{sport.key}}">{{sport.type}},</a>
+                {% endif %}
+            {% endfor %}
+            <a style="font-size: 8pt; font-style: normal; color: red;" href="/sportRequest"}">Request a sport</a>
+        </td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td valign="top" width="50">
+            <span class="frontpageheading_top">League&nbsp;</span>
+        </td>
+        <td valign="middle" align="left">
+            {% ifequal leagues.count 0 %}
+                <span class="frontpage_text">No <b>{{sportselected.type}}</b> leagues available</span>
+                <br><a style="font-size: 8pt; font-style: normal; color: red" href="/addleague">Request a {{sportselected.type}} league</a>
+             {% else %}
+                {% for league in leagues %}
+                    {% if leagueselected.name == league.name %}
+                    <a style="font-size: 8pt; font-style: normal; text-decoration: underline;" href="/matchListByLeague?sportkey={{sportselected.key}}&key={{league.key}}">{{league.name}},</a>
+                    {% else %}
+                    <a style="font-size: 8pt; font-style: normal;" href="/matchListByLeague?sportkey={{sportselected.key}}&key={{league.key}}">{{league.name}},</a>
+                    {% endif %}
+                 {% endfor %}                
+             {% endifequal %}
+        </td>
+    </tr>
+</table>
+{% if user %}
+<!-- dont show login links -->
+{% else %}
+<!-- Login links -->
+<span class="frontpageheading_top">To comment login via</span>
+<a href="{{ login_url }}">Gmail&nbsp;<img src="images/google_icon.png" border="0" /></a>
+<a href="/facebookLogin">Facebook&nbsp;<img src="images/facebook_icon.png" border="0" /></a>
+<br>
+{% endif %}
+<table width="280" border="0" cellpadding="1" cellspacing="1" class="frontpage_fixture_list">
+    <tr>
+        <td width="280">
+            {% if matchfilter == "now" %}
+                {% if leagueselected %}
+                    <h2 class="frontpageheading">Up & coming matches for <b>{{leagueselected.name}}</b></h2>
+                {% else %}
+                    <h2 class="frontpageheading">Up & coming matches for <b>{{sportselected.type}}</b></h2>
+                {% endif %}
+            {% else %}
+            <h2 class="frontpageheading">All matches</h2>
+            {% endif %}
+            {% if league %}
+                <a style="font-size: 8pt; font-style: normal;" href="/matchListByLeague?key={{league.key}}&sportkey={{sportselected.key}}&matchfilter=all"><h3 class="match_frontpage_link">(See all {{league.name}} matches & results)</h3></a><br>
+            {% endif %}
+            {% ifequal matches.count 0 %}
+                <br><span class="frontpage_text">No up & coming <b>{{league.name}}</b> matches available</span>
+            {% else %}
+                {% for match in matches %}
+                    <span class="frontpage_fixture_date_span">{{match.matchStart|date:"j F Y \a\t P"}}</span><br>
+                    <a href='/match?key={{match.key}}&sport={{match.sport.type|replacestringspace:"_"}}&league={{match.league.name|replacestringspace:"_"}}&match={{match.name|replacestringspace:"_"}}'>
+                        <h2 class="match_frontpage_link">{{match.sideA.name}}&nbsp;({{match.scoreA}})&nbsp;vs&nbsp;{{match.sideB.name}}&nbsp;({{match.scoreB}})</h2>
+                    </a>
+                    <br>
+                {% endfor %}
+            {% endifequal %}
+        </td>
+    </tr>
+</table>
+
+<h1 class="frontpageheading">Latest Activity</h1>
+<table width="280" cellpadding="2" cellspacing="2"><!-- opera mini width -->
+    {% for comment in comments %} <!-- top 5 comments -->
+    <tr>
+        <td class="matchcommenttext">
+            <!-- Sport and Match Name -->
+            <h2 class="match_frontpage_link"><a href="/profileView?key={{comment.profile.key}}&redirect={{request.uri}}">{{comment.profile.alias}}</a></h2>
+            {% ifequal comment.commenttype "@r" %}
+                <span style="color:red; font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+            {% else %}
+                {% ifequal comment.commenttype "@h" %}
+                    <span style="color:blue; font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                {% else %}
+                    {% ifequal comment.commenttype "@a" %}
+                        <span style="color:green; font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                    {% else %}
+                        {% ifequal comment.commenttype "checkin" %}
+                            <span style="font-size: 8pt; font-style: normal; font-weight: normal;">joined</span>
+                        {% else %}
+                            {% ifequal comment.commenttype "teamsupport" %}
+                                <span style="font-size: 8pt; font-style: normal; font-weight: normal;"> is a {{ comment.profile|getprofileteamsupportedinmatch:comment.match }} supporter in</span>
+                            {% else %}
+                                <span style="font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                            {% endifequal %}
+                        {% endifequal %}
+                    {% endifequal %}
+                {% endifequal %}
+            {% endifequal %}
+            <span style="font-size: 7pt; font-style: normal;">... </span><h2 class="match_frontpage_link"><a font-style: normal;" href='/match?key={{comment.match.key}}&sport={{comment.match.sport.type|replacestringspace:"_"}}&league={{comment.match.league.name|replacestringspace:"_"}}&match={{comment.match.name|replacestringspace:"_"}}'>{{comment.match.name}}</a></h2>
+            <br><i class="matchlistdate">... {{comment.time|gettimediff}}&nbsp;</i>
+            <a style="font-size: 7pt; font-style: normal;" href=/match?key={{comment.match.key}}&sport={{comment.match.sport.type|replacestringspace:"_"}}&league={{comment.match.league.name|replacestringspace:"_"}}&match={{comment.match.name|replacestringspace:"_"}}>Comment</a>
+             <!-- option to remove comment by commenter as well -->
+            {% ifequal comment.profile.key profile.key %}
+            <a href="/commentDelete?commentkey={{comment.key}}&redirect={{request.uri}}" style="font-size: 8pt;">remove</a>
+            {% endifequal %}
+            <!-- admin comment delete -->
+            {% if admin %}
+            <a href="/commentDelete?commentkey={{comment.key}}&redirect={{request.uri}}" style="font-size: 7pt;">remove</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/samirf_capetown/!svn/ver/105/trunk/lib/httplib2
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/samirf_capetown/!svn/ver/105/trunk/lib/httplib2/__init__.py
+END
+iri2uri.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/samirf_capetown/!svn/ver/105/trunk/lib/httplib2/iri2uri.py
+END

@@ -1,0 +1,56 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+<!-- Show pre-match, match and post match comments -->
+<!-- Differentiate with teams using colors -->
+{% if user %}
+    <form action="profileMatchAdd" method="get">
+        <input type="hidden" name="matchKey" value="{{match.key}}"/>
+        <input type="hidden" name="redirect" value="{{request.uri}}"/>
+        <button type="submit">favourite</button>
+    </form>
+{% endif %}
+<form action="profile"
+<div id="match">
+    {% if admin %}
+    <form id="matchUpdate" action="matchUpdate" method="get">
+        <fieldset>
+            <legend>Match Scores</legend>
+            <input type="hidden" name="matchKey" value="{{match.key}}"/>
+            <input type="hidden" name="redirect" value="{{request.uri}}"/>
+            <label for="name">name</label>
+            <input name="name" id="name" type="text" value="{{match.name}}"/>
+            <label for="scoreA">scoreA</label>
+            <input name="scoreA" id="scoreA" type="text" value="{{match.scoreA}}"/>
+            <label for="scoreB">scoreB</label>
+            <input name="scoreB" id="scoreB" type="text" value="{{match.scoreB}}"/>
+            <button type="submit">update</button>
+        </fieldset>
+    </form>
+    {% endif %}
+    {% if user %}
+    match: <strong>{{match.name}}</strong>: {{match.sideA}} <b>({{match.scoreA}})</b> vs {{match.sideB}} <b>({{match.scoreB}})</b>
+    
+    <form id="commentForm" action="commentAdd" method="post">
+        <input type="hidden" name="matchKey" value="{{match.key}}"/>
+        <input type="hidden" name="redirect" value="{{request.uri}}"/>
+        <fieldset>
+            <legend>add comment</legend>
+            <textarea cols="80" rows="2"  id="comment" name="comment"></textarea>
+            <button type="submit">add</button>
+        </fieldset>
+    </form>
+    {% endif %}
+    <div id="comments">
+        <h1>Comments:</h1>
+        <ul>
+            {% for comment in comments %}
+            <li><strong>{{comment.user}}</strong> {{comment.text}} <em>{{ comment.time|date:"j F Y \a\t P"}}</em></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

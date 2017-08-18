@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+<img src="images/twitter_icon.png" border="0" /> Twitter user logged in:<br><br>
+identifier: {{identifier}}<br>
+name: {{name}}<br>
+email: {{email}}<br>
+profile_pic_url: {{profile_pic_url}}<br>
+
+{% endblock %}

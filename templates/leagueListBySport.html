@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+{% block title %}MatchComment {{sportselected.type}}{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+{% block content %}
+
+<div class="breadcrumb_navigation">
+    <a href="/">Sport&nbsp;></a>
+    <a href="/leagueListBySport?key={{sportselected.key}}">{{sportselected.type}}</a>
+</div>
+
+{% include "home.html" %}
+
+{% endblock %}

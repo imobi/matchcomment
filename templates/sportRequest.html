@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+{% block title %}MatchComment - Sport Request{% endblock %}
+{% block pagetitle %}MatchComment - Sport Request{% endblock %}
+
+{% block content %}
+
+{% if user %}
+<div id="sportRequest">
+    <form id="sportRequest" action="sportRequest" method="get">
+        <fieldset>
+            <legend>Sport Request</legend>
+            <label for="sport">Sport</label>
+            <input name="sport" id="sport" type="text"/>
+            <label for="name">Name</label>
+            <input name="name" id="name" type="text"/>
+            <label for="surname">Surname</label>
+            <input name="surname" id="surname" type="text"/>
+            <label for="email">Email</label>
+            <input name="email" id="email" type="text"/>
+            <label for="country">Country</label>
+            <input name="country" id="country" type="text"/>
+            <label for="city">City</label>
+            <input name="city" id="city" type="text"/>
+            <button type="submit">Request</button>
+        </fieldset>
+    </form>
+</div>
+{% else %}
+<b>Please login to request a sport</b>
+{% endif %}
+
+{% endblock %}

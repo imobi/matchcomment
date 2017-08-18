@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+            <div id="top_sub_navigation">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="top_sub_navigation">
+                    <tr>
+                        <td width="120">&nbsp;</td>
+                        <td align="left">
+                            <!-- only certain users can add matches -->
+                            {% if user %}
+                            <a href="/matchNew">Add Match</a>
+                            {% endif %}
+                        </td>
+                        <td><a href="/"></a></td>
+                        <td><a href="/"></a></td>
+                    </tr>
+                </table>
+            </div>
+<ul>
+    {% for match in matches %}
+    <li><a href="/matchEdit?key={{match.key}}&leaguekey={{match.league.key}}"><span style="color:blue;">{{match.sport.type}} ></span> <span style="color:green;">{{match.league.name}} ></span> {{match.name}}</a><!--&nbsp;-&nbsp;<a href="/matchDelete?key={{match.key}}">Delete</a>--></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

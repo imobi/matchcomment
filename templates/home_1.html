@@ -1,0 +1,223 @@
+{% block content %}
+
+<table width="280" border="0" cellpadding="1" cellspacing="1" class="frontpage_sport_league_selection">
+    <tr>
+        <td valign="top">
+            <span class="frontpageheading">Sports&nbsp;</span>
+        </td>
+        <td valign="middle">
+            {% for sport in sports %}
+                {% if sportselected.type == sport.type %}
+                <a style="text-decoration: underline;" href="/leagueListBySport?key={{sport.key}}">{{sport.type}}</a>
+                {% else %}
+                <a href="/leagueListBySport?key={{sport.key}}">{{sport.type}}</a>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <span class="frontpageheading">Leagues&nbsp;</span>
+        </td>
+        <td valign="middle">
+            {% for league in leagues %}
+                {% if leagueselected.type == league.name %}
+                <a style="text-decoration: underline;" href="/matchListByLeague?sportkey={{sportselected.key}}&key={{league.key}}">{{league.name}}</a>
+                {% else %}
+                <a href="/matchListByLeague?sportkey={{sportselected.key}}&key={{league.key}}">{{league.name}}</a>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+</table>
+{% if user %}
+
+<table width="280" border="0" cellpadding="0" cellspacing="0" class="frontpage_sport_league_selection">
+    <tr>
+        <td>
+            <form id="matchSearch" name="matchSearch" action="matchSearch" method="post">
+                <input type="hidden" name ="fromsearch" value="true" />
+                <span class="frontpageheading">Sport&nbsp;&nbsp;&nbsp;</span>
+            {% ifequal fromsearch "true" %}
+               <select name="sportsearchkey">
+                    <!--<option value="All">All</option>-->
+                    {% for sport in sports %}
+                        <option value="{{sport.key}}" {% ifequal sport.key.__str__ sportsearchkeyselected %}selected{% endifequal %}>{{sport.type}}</option>
+                    {% endfor %}
+                </select><br>
+                <span class="frontpageheading">League</span>
+                <select name="leaguesearchkey">
+                    <option value="All">All</option>
+                {% for league in leagues %} <!-- show leagues from default preference... -->
+                    <option value="{{league.key}}" {% ifequal league.key.__str__ leaguesearchkeyselected %}selected{% endifequal %}>{{league.name}}</option>
+                {% endfor %}
+                </select>
+                <!--<span class="frontpageheading">Team&nbsp;&nbsp;&nbsp;</span>
+                <select name="teamsearchkey">
+                    <option value="All">All</option>
+                {% for team in teams %} <!-- show teams from default preference... -->
+                    <option value="{{team.key}}" {% ifequal team.key.__str__ teamsearchkeyselected %}selected{% endifequal %}>{{team.name}}</option>
+                {% endfor %}
+                </select>-->
+            {% else %}
+                <select name="sportsearchkey">
+                    <!--<option value="All">All</option>-->
+                    {% for sport in sports %}
+                        <option value="{{sport.key}}" {% ifequal sport.key profile.sportPreference.key %}selected{% endifequal %}>{{sport.type}}</option>
+                    {% endfor %}
+                </select><br>
+                <span class="frontpageheading">League</span>
+                <select name="leaguesearchkey">
+                    <option value="All">All</option>
+                {% for league in leagues %} <!-- show leagues from default preference... -->
+                    <option value="{{league.key}}" {% ifequal league.key profile.leaguePreference.key %}selected{% endifequal %}>{{league.name}}</option>
+                {% endfor %}
+                </select>
+                <!--<span class="frontpageheading">Team&nbsp;&nbsp;&nbsp;</span>
+                <select name="teamsearchkey">
+                    <option value="All">All</option>
+                {% for team in teams %} <!-- show teams from default preference... -->
+                    <option value="{{team.key}}">{{team.name}}</option>
+                {% endfor %}
+                </select>-->
+            {% endifequal %}
+                <input type="submit" value="search" class="button">
+            </form>
+        </td>
+    </tr>
+</table>
+
+{% else %}
+<!-- Login links -->
+<span class="frontpageheading">Login via</span>
+<a href="{{ login_url }}">Gmail&nbsp;<img src="images/google_icon.png" border="0" /></a>
+<a href="/facebookLogin">Facebook&nbsp;<img src="images/facebook_icon.png" border="0" /></a>
+<!--<a href="/twitterLogin">Twitter&nbsp;<img src="images/twitter_icon.png" border="0" /></a>-->
+<br>
+
+{% endif %}
+<table width="280" border="0" cellpadding="0" cellspacing="0" class="frontpage_fixture_list">
+    <tr>
+        <td>
+            <!-- <b>Rugby > Super Rugby ></b> Fixtures show top 5 -->
+            <h2 class="frontpageheading">Official up & coming matches</h2>
+            {% ifequal matches.count 0 %}
+                <span class="frontpage_text">No matches available</span>
+            {% else %}
+                {% for match in matches %}
+                        <span class="frontpage_fixture_date_span">{{match.matchStart|date:"j F Y \a\t P"}} :</span><br>
+                        <a style="font-size: 10pt;" href='/match?key={{match.key}}&sport={{sport.type|replacestringspace:"_"}}&league={{league.name|replacestringspace:"_"}}&match={{match.name|replacestringspace:"_"}}'>
+                            <h3 class="match_frontpage_link">{{match.sideA.name}}&nbsp;{% if match.sideA.avatar %}<img src="teamimg?team={{match.sideA.key}}" width="15" height="15" border="0">{% else %}<img src="/images/teamlogo.png" width="15" height="15" border="0">{% endif %}&nbsp;({{match.scoreA}})&nbsp;vs&nbsp;{{match.sideB.name}}&nbsp;{% if match.sideB.avatar %}<img src="teamimg?team={{match.sideB.key}}" width="15" height="15" border="0">{% else %}<img src="/images/teamlogo.png" width="15" height="15" border="0">{% endif %}&nbsp;({{match.scoreB}})</h3>
+                        </a>
+                        <!--<span class="frontpage_fixture_list_live_span">live</span>&nbsp;
+                        <span class="frontpage_fixture_list_fans_span">fans ({{ match.scoreA }})</span>&nbsp;-->
+                        {% if user %}
+                        <!--
+                        <span class="frontpage_fixture_list_bookmark_span"><a style="font-size: 7pt; color: red;" href="/profileMatchAdd?key={{match.key}}&redirect=/">reminder</a></span>
+                        <span>
+                        <a href="http://m.twitter.com/home?status={{match.sideA.name}}%20vs%20{{match.sideB.name}}%20COMMENTS%20LIVE%20AT%20http://www.matchcomment.com/match?key={{match.key}}" id="matchcomment_link_twitter" alt="Twitter" target="_blank">
+                            <img src="http://www.matchcomment.com/images/twitter_icon.png" alt="Twitter" title="Twitter" border="0" /></a>
+                        <a href="http://m.facebook.com/sharer.php?u=http://www.matchcomment.com/match?key={{match.key}}&match={{match.sideA.name}}_{{match.sideB.name}}" id="matchcomment_link_facebook" alt="Facebook" target="_blank">
+                            <img src="http://www.matchcomment.com/images/facebook_icon.png" alt="Facebook" title="Facebook" border="0" /></a>
+                        </span>
+                        -->
+                            <!--
+                            <a name="fb_share" type="icon" share_url="http://www.matchcomment.com/match?sport={{sport.type}}&league={{league.name}}&match={{match.name}}&key={{match.key}}" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+                            <iframe src="http://www.facebook.com/plugins/like.php?app_id=185465108167617&amp;href=http%3A%2F%2Fwww.matchcomment.com%2Fmatch%3Fmatch%3D{{match.sideA.name}}%2520vs%2520{{match.sideB.name}}%26key%3D{{match.key}}&amp;send=true&amp;layout=button_count&amp;width=100&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:20px; top:0px; bottom:0px;" allowTransparency="true"></iframe>
+                            -->
+                        {% endif %}
+                    <br>
+                {% endfor %}
+                {% if league %}
+                <br><a style="font-size: 8pt; font-style: normal;" href="/matchListByLeague?key={{league.key}}"><h3 class="match_frontpage_link">All {{league.name}} matches & results</h3></a>
+                {% endif %}
+            {% endifequal %}
+        </td>
+    </tr>
+    {% if user %}
+    <tr>
+        <td><br>
+            <h1 class="frontpageheading">Checked in matches</h1>
+            {% if profile.email == "None" %}
+            <span style="font-size: 7pt; color: black;">Set <b>email</b> and <b>mobile</b> in your <a style="font-size: 7pt;" href="/profile">Profile</a> for <b>email</b> and <b>sms</b> notifications</span><br>
+            {% endif %}
+            {% if matchFavourites %}
+            {% for match in matchFavourites %}
+                <a style="font-size: 10pt;" href='/match?key={{match.key}}&sport={{sport.type|replacestringspace:"_"}}&league={{league.name|replacestringspace:"_"}}&match={{match.name|replacestringspace:"_"}}'>{{match.sideA.name}} ({{match.scoreA}}) vs {{match.sideB.name}} ({{match.scoreB}})</a>
+                <span class="frontpage_fixture_date_span">{{match.matchStart|date:"j F Y \a\t P"}}</span>
+                <span class="frontpage_fixture_list_fans_span"><a style="font-size: 7pt; color: green;" href="/profileMatchDelete?key={{match.key}}&redirect=/">remove</a></span>
+                <br>
+            {% endfor %}
+            {% else %}
+                <span class="frontpage_text">No match checked in</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endif %}
+    <!--
+    <tr>
+        <td>
+            <b>Rugby > Super Rugby ></b> Logs
+        </td>
+    </tr>
+    -->
+</table>
+<br>
+<h1 class="frontpageheading">
+Latest comments <!-- From Matchcomment, Twitter, Facebook, other sites? -->
+</h1>
+<table width="280" cellpadding="2" cellspacing="2"><!-- opera mini width -->
+    {% for comment in comments %} <!-- top 5 comments -->
+    <tr>
+        <td class="matchcommenttext"><!--works {{ comment.text|lower|truncatewords:"1"|slice:":3" }}-->
+            <!-- Sport and Match Name -->
+            <span style="font-size: 7pt; font-style: normal;">
+                <a style="font-size: 7pt; font-style: normal;" href="/leagueListBySport?key={{comment.match.league.sport.key}}">{{comment.match.league.sport.type}}</a>&nbsp;>
+                <a style="font-size: 7pt; font-style: normal;" href="/matchListByLeague?key={{comment.match.league.key}}">{{comment.match.league.name}}</a>&nbsp;>
+                <a style="font-size: 7pt; font-style: normal;" href='/match?key={{comment.match.key}}&sport={{comment.match.sport.type|replacestringspace:"_"}}&league={{comment.match.league.name|replacestringspace:"_"}}&match={{comment.match.name|replacestringspace:"_"}}'>{{comment.match.name}}</a>&nbsp;>
+            <a style="font-size: 7pt;" href="/profileView?key={{comment.profile.key}}&redirect={{request.uri}}">
+            {{comment.profile.alias}}
+            </a>&nbsp;
+            <span style="font-size: 7pt; font-style: normal;">...<span>
+            {% ifequal comment.commenttype "@r" %}
+                <span style="color:red; font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+            {% else %}
+                {% ifequal comment.commenttype "@h" %}
+                    <span style="color:blue; font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                {% else %}
+                    {% ifequal comment.commenttype "@a" %}
+                        <span style="color:green; font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                    {% else %}
+                        <span style="font-size: 8pt; font-style: normal;">{{comment.text}}</span>
+                    {% endifequal %}
+                {% endifequal %}
+            {% endifequal %}
+            <!--<i class="matchlistdate">{{ comment.time|date:"j F Y \a\t P"}}</i>-->
+            <br><i class="matchlistdate">... {{comment.time|gettimediff}}&nbsp;</i>
+            <a style="font-size: 7pt; font-style: normal;" href='/match?key={{comment.match.key}}&sport={{comment.match.sport.type|replacestringspace:"_"}}&league={{comment.match.league.name|replacestringspace:"_"}}&match={{comment.match.name|replacestringspace:"_"}}'>(comment on game)</a>
+            {% if admin %}
+            <a href="/commentDelete?commentkey={{comment.key}}&redirect={{request.uri}}" style="font-size: 8pt;">remove</a>
+            {% endif %}<!-- Shorten tweet with readmore link linking to matchcomment.com -->
+            <a style="font-size: 7pt; font-style: normal;" href="http://m.twitter.com/home?status={{comment.text}}%20via%20http://www.matchcomment.com/match?key={{comment.match.key}}" id="matchcomment_link_twitter" alt="Twitter" target="_blank">(tweet)</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<!--
+
+<span class="frontpageheading">Sport categories&nbsp;&nbsp;&nbsp;</span>
+<ul>
+    {% for sport in sports %}
+    <li>
+        <a href="/leagueListBySport?key={{sport.key}}">{{sport.type}}</a><br>
+        &nbsp;&nbsp;-&nbsp;<a href="/">add supporter club</a><br>
+        &nbsp;&nbsp;-&nbsp;<a href="/">add league</a><br>
+        &nbsp;&nbsp;-&nbsp;<a href="/">add match</a><br>
+        &nbsp;&nbsp;-&nbsp;<a href="/">add team</a><br>
+        &nbsp;&nbsp;-&nbsp;<a href="/">add player</a><br>
+    </li>
+    {% endfor %}
+</ul>
+-->
+{% endblock %}

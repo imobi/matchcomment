@@ -1,0 +1,21 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin">Admin Home</a>&nbsp;|&nbsp;<a href="/adminSportAll">Sport Home</a></p>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/sportNew">Add Sport</a></p>
+<p></p>
+<ul>
+    {% for sport in sports %}
+    <li><a href="/sportEdit?key={{sport.key}}">{{sport.type}}</a>&nbsp;-&nbsp;<a href="/sportDelete?key={{sport.key}}">Delete</a></li>
+    {% endfor %}
+</ul>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/sportNew">Add Sport</a></p>
+
+
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin">Admin Home</a>&nbsp;|&nbsp;<a href="/adminLeagueAll">League Home</a></p>
+<hr>
+    <form id="leagueAdd" action="leagueAdd" method="post">
+        <fieldset>
+            <legend>Add League</legend>
+            Sport:<select name="sportkey">
+            {% for sport in sports %}
+                <option value="{{sport.key}}" {% ifequal sport.key leaguesportkey %}selected{% endifequal %}>{{sport.type}}</option>
+            {% endfor %}
+            </select><br>
+            <label for="name">Name:</label>
+            <input name="name" id="name" type="text"/><br>
+            <label for="description">Description:</label>
+            <input name="description" id="description" type="text"/><br>
+            <label for="country">Country:</label>
+            <input type="text" id="text" name="country" value="{{league.country}}"><br>
+            <label for="city">City:</label>
+            <input type="text" id="text" name="city" value="{{league.city}}">
+            <button type="submit">Add</button>
+        </fieldset>
+    </form>
+
+{% endblock %}

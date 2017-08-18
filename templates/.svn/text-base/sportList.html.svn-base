@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+
+<strong>
+    <a href="/">Sports</a>
+    <span class="frontpageheading">&nbsp;>&nbsp;Sports</span>
+</strong>
+<ul>
+    {% for sport in sports %}
+    <li><a href="/leagueListBySport?key={{sport.key}}">{{sport.type}}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

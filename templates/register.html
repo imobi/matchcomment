@@ -1,0 +1,20 @@
+{% extends "template.html" %}
+{% block title %}Match{% endblock %}
+{% block pagetitle %}Match Comment{% endblock %}
+
+{% block content %}
+<!-- Show pre-match, match and post match comments -->
+<!-- Differentiate with teams using colors -->
+<div id="registration">
+    <form id="userRegistration" action="register" method="get">
+        <fieldset>
+            <legend>User Registration</legend>
+            <label for="name">username</label>
+            <input name="name" id="name" type="text"/>
+            <label for="sideA">password</label>
+            <input name="sideA" id="sideA" type="text"/>
+            <button type="submit">register</button>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

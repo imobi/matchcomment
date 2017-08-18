@@ -1,0 +1,87 @@
+<html><title>demo</title>
+
+<style type="text/css" style="display:none">
+ul.auto-list{display:none;position:absolute;top:0px;left:0px;border:1px solid green;background-color:#A3DF99;padding:0;margin:0;list-style:none;}
+uauto-list>li:hover,ul.auto-list>li[data-selected=true]{background-color:#236574;}ul.auto-list>li{border:1px solid gray;cursor:default;padding:2px;}mark{font-weight:bold;}
+</style>
+
+<style type="text/css">#ta{width:300px;height :100px;font-size:11px;font-family:"Helvetica Neue",Arial,sans-serif;white-space:pre;}</style> 
+
+
+<script src="jquery-1.5.js" type="text/javascript"></script> 
+<script src="auto.js" type="text/javascript">
+
+</script> <script type="text/javascript">var urls = [
+		"facebook.com",
+		"google.com",
+		"twitter.com",
+		"amirharel.com",
+		"amazon.com",
+		"microsoft.com",
+		"quora.com",
+		"walla.co.il",
+		"ebay.com",
+		"gowala.com",
+		"myspace.com",
+		"youtube.com"		
+		];
+		
+		function initURLTextarea(){
+			$("#outter textarea").autocomplete({
+						wordCount:1,
+						mode: "outter",
+						on: {
+							query: function(text,cb){
+								var words = [];
+								for( var i=0; i<urls.length; i++ ){
+									if( urls[i].toLowerCase().indexOf(text.toLowerCase()) == 0 ) words.push(urls[i]);
+									
+								}
+								cb(words);								
+							}
+						}
+					});
+		}
+		
+		
+		var countries = [];
+  		function initContriesTextarea(){
+			$.ajax("countries.txt",{
+				success: function(data, textStatus, jqXHR){
+					countries = data.replace(/\r/g, "" ).split("\n"); 
+					
+					$("#contries textarea").autocomplete({
+						wordCount:1,
+						on: {
+							query: function(text,cb){
+								var words = [];
+								for( var i=0; i<countries.length; i++ ){
+									if( countries[i].toLowerCase().indexOf(text.toLowerCase()) == 0 ) words.push(countries[i]);
+									if( words.length > 5 ) break;
+								}
+								cb(words);								
+							}
+						}
+					});
+					
+					
+				}
+			});
+		
+		}
+		
+  		
+  		$(document).ready(function(){
+  			initContriesTextarea();
+			initURLTextarea();
+
+  		});
+		
+		
+  		
+  	</script> 
+</head>
+<body>
+<div><div id="contries">In this example the auto complete will try to find a match of country names<br/> <textarea style="width: 400px; height 250px;"></textarea></div><div id="outter">In this example i set the mode to be "outter" which is the default mode in IE<br/> I plan to fix this but will take some time...<br/> Just start type major sites urls and it will autocomplete(like facebook.com)<br/> <textarea style="width: 200px; height 250px;"></textarea></div></div></body></html>
+ 
+</script>
