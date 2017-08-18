@@ -1,0 +1,12 @@
+Incentives for Supporter clubs / groups so that they can drive MatchComment to their members:
+
+Allow matchcommment users to show their matchcomment activities to contacts on their existing social networks like facebook, twitter and foursquare e.g. 'Check in' to match.
+Develop a white label app for sport team, league, player supporter group / network (html, nokia, bb, android)
+Supporter groups / networks will be able to:
+- Engage and organise their members and interact with other supporter groups
+- Supporter group owners will take a revenue share from the following activities (wallet, ticket sales, fan swag / gear, virtual goods, air time sales, loyalty, travel)
+- Supporter groups owners organise and post events for members
+- Supporter group members can organise their 'sportbook' with a timeline of events they watched or attended.
+
+Make available a public matchcomment available api for websites and developers to plugin to in addition to the widget generator.
+Incorportate content for sports, leagues, teams and players from wikipedia api, google news api or other sport portals.

@@ -1,0 +1,6 @@
+Work on extending the current team and player profiles.
+Allow users to search or see lists of supporter clubs, teams and players and allow users to 'like' or 'join' them.
+Allow for better management of 'networks' by sport supporter clubs through an admin interface for supporter clubs to add / invite their own fans or users to their groups (from gmail, facebook or email address book or manually adding fans). Fans for a team can already be profiled if they follow a particular team by clicking the follow button.
+If a user accepts the invitation to the supporter club network, they get access to the basic matchcomment functionality and if they pay their membership they can get access to advanced functionality controlled by the supporter clubs who get a revenue share from that. e.g. loyalty and group buying.
+Improve the web interface to a richer experience for matchcomment for supporter clubs and fans for during the week accessibility as opposed to match day.
+Allow users to see lists of supporter clubs, teams and players by region (geographical graphical social network)
